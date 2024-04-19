@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  
+}
+
+/* Сетка: четыре одинаковых столбца, которые плавают рядом друг с другом */
+.column {
+  float: left;
+  width: 20%;
+  padding: 10px;
+}
+
+/* Стиль изображения внутри сетки */
+.column img {
+  opacity: 0.8; 
+  cursor: pointer; 
+}
+
+.column img:hover {
+  opacity: 1;
+}
+
+/* Очистить поплавки после колонок */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Расширяющийся контейнер изображений */
+.container {
+  position: relative;
+  display: none;
+}
+
+/* Расширение текста изображения */
+#imgtext {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 20px;
+}
+
+/* Закрываемая кнопка внутри развернутого изображения */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div style="text-align:center">
+  <h2>TOP 5 TAGAM</h2>
+  <a href="index2.html"> Basty betke oty</a>
+</div>
+
+<!-- Четыре колонны -->
+<div class="row">
+  <div class="column">
+    <img src="C:\Users\User\Desktop\сайт\негізгі папка\біріншіТ.jpg" alt="диеталық сүзбе" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="C:\Users\User\Desktop\сайт\негізгі папка\екіншіТ.jpg" alt="Көкөністер" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="C:\Users\User\Desktop\сайт\негізгі папка\үшіншіТ.jpg" alt="таңғы ас" style="width:100%" onclick="myFunction(this);">
+  </div>
+  <div class="column">
+    <img src="C:\Users\User\Desktop\сайт\негізгі папка\төртіншіТ.jpg" alt="Балық котлеті" style="width:100%" onclick="myFunction(this);">
+  </div>
+   <div class="column">
+    <img src="C:\Users\User\Desktop\сайт\негізгі папка\бесіншіТ.jpg" alt="диеталық венн вафлиі" style="width:100%" onclick="myFunction(this);">
+  </div>
+</div>
+
+<div class="container">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+  <img id="expandedImg" style="width:100%">
+  <div id="imgtext"></div>
+</div>
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+  showRecipe(imgs.alt); // Мәтінді қосу үшін функцияны шақырып көріңіз
+}
+
+function showRecipe(altText) {
+  var recipeText = ""; // Тамақтың рецептін сақтау үшін азаматтандырылған мәтін
+  switch(altText) { // altText мәнін бойынша switch операторы арқылы тексеру
+    case "диеталық сүзбе":
+      recipeText = "4 портция:Сүзбе-300гр; Жұмыртқа-1дана; қант-25гр; Ванилин-0,2 гр;Сұлы ұны -40гр.";
+      break;
+    case "Көкөністер":
+      recipeText = "1 порция:Тауық еті - 83.3 гр; Брокколи - 58.3 гр; жас цуккини-66.7 гр; Брюссель Қырыққабаты-16.7 гр; жасыл бұршақ-16.7 гр; болгар бұрышы-20 гр; Сарымсақ 0.3гр;Тұз -0.2 кіші қасық құрғақ дәмдеуіштер~0.1гр; зәйтүн майы 0.5 асқасық";
+      break;
+    case "таңғы ас":
+      recipeText = "2 Порция:Сүзбе (5-9%)- 200;Жұмыртқа-2дана.;Қант дәміне қарай; Бидай ұны 2 кіші қасықпен, Мейіз 1ас қасық; Су 2 ас қасық.";
+      break;
+    case "Балық котлеті":
+      recipeText = " 8 Порция:Форель (филе) - 350 гр ; Камбала (филе)- 350 гр; Жұмыртқа -1 дана ; Томат пастасы 2 ас қасық; Ақжелкен (3 бұтақ)-10 гр ;Құрғақ дәмдеуіштер (балық үшін)1 кіші қасық.; Дәміне қарай ұнтақталған қара бұрыш; Дәміне қарай тұз";
+      break;
+          case "диеталық венн вафлиі":
+      recipeText = "Айран(1-2,5%)-250 мл; Күріш ұны-140 гр; Жұмыртқа-1 дана; ашықты-0,5 кіші қасық; қант алмастырғыш-2гр)";
+      break;
+    default:
+      recipeText = "Рецепт табылмады.";
+  }
+  document.getElementById("recipe").innerHTML = recipeText; // Мәтінді көрсету үшін түстірілген элементке мәтінді қосу
+}
+</script>
+
+<!-- HTML көріністегі <div> тегінде тамақтың рецептін көрсету үшін түстірілген id-мен белгіленген мәтінді көрсету -->
+<div id="recipe" style="text-align: center; margin-top: 20px;"></div>
+
+
+</body>
+</html>
